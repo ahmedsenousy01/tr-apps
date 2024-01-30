@@ -1,0 +1,7 @@
+{
+  "extends": "@repo/typescript-config/base",
+  "compilerOptions": {
+    "strict": true,
+  },
+  // "include": ["src/index.ts"]
+}
