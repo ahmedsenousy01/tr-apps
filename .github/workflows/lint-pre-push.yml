@@ -1,0 +1,25 @@
+name: Lint Pre Push
+on:
+  push:
+    branches: [production, dev, hotfix]
+  pull_request:
+    branches: [production, dev, hotfix]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: mysql://localhost:5336?ssl={"rejectUnauthorized":true}
+      NODE_ENV: development
+      NEXTAUTH_SECRET: your_nextauth_secret
+      NEXTAUTH_URL: http://localhost:3000
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install -g pnpm@latest && pnpm install
+      - name: Format and lint code
+        run: pnpm format && pnpm lint
