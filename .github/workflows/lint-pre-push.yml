@@ -1,0 +1,20 @@
+name: Lint Pre Push
+on:
+  push:
+    branches: [production, dev, hotfix]
+  pull_request:
+    branches: [production, dev, hotfix]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install -g pnpm@latest && pnpm install
+      - name: Format and lint code
+        run: pnpm format && pnpm lint

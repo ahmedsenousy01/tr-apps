@@ -10,6 +10,9 @@
     "mobile": "pnpm --filter mobile",
     "server": "pnpm --filter server"
   },
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
@@ -24,8 +27,5 @@
   "packageManager": "pnpm@8.9.0",
   "engines": {
     "node": ">=18"
-  },
-  "dependencies": {
-    "zod": "^3.22.4"
   }
 }
